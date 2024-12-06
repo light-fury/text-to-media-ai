@@ -44,7 +44,7 @@ User actions (login attempts and content views) are logged in a separate databas
 
 When content generation is complete, the system prints a notification message to the terminal, including a link to the web page where the user can view their content.
 
-### 5. Directory Structure
+## Directory Structure
 
 ![image](https://github.com/user-attachments/assets/bce102f4-0b53-44c0-8c13-c2d0774f1a40)
 
@@ -60,7 +60,7 @@ When content generation is complete, the system prints a notification message to
 - requirements.txt: Lists Python dependencies.
 - .env: Contains API keys and other secrets (not checked into version control).
 
-### 6. Prerequisites
+## Prerequisites
 
 - Python 3.11.2
 - A .env file with the following variables:
@@ -69,3 +69,71 @@ When content generation is complete, the system prints a notification message to
   OPENAI_API_KEY=<your_openai_api_key>
   RUNWAYML_API_SECRET=<your_runwayml_api_key>
 ```
+- Required Python packages
+
+```python
+  pip install -r requirements.txt
+```
+
+- Export RunwayML API key (for Linux/Mac; for Windows, set it via .env):
+```bash
+  export RUNWAYML_API_SECRET=<your_runwayml_api_key>
+```
+
+## Usage
+1. Content Generation
+Run main.py to start the generation process:
+
+```python
+python main.py <user_id> "<prompt>"
+```
+Example:
+
+```python
+python main.py user123 "A serene landscape with mountains and a river at sunset."
+```
+This will:
+
+- Insert a new record into ai_generation.db with status "Processing."
+- Generate 5 images and 5 videos using the prompt.
+- Update the database record to "Completed" once done.
+- Print a terminal notification indicating that content is ready.
+
+
+2. Serving the Content
+Start the Flask server:
+
+```python
+python web.py
+```
+
+Access the content in your browser:
+```bash
+http://localhost:5000/?user_id=user123
+```
+
+If still processing, you’ll see a "Processing" page.
+Once completed, a gallery of images and videos will be displayed.
+
+3. Logs
+
+The user_logs.db database logs user interactions:
+
+"Login" when a user visits / with user_id.
+
+"View Content" when a user views an image or video file.
+
+## Notes
+
+- Ensure that generated_content/ directory is writable.
+- The code currently uses eval() to parse lists of file paths stored as text in the database. For a production environment, prefer json.loads() for safer parsing.
+- RunwayML and OpenAI generation may take some time. The processing page remains active until the main.py script completes generation.
+- The notification is currently in-terminal only. You can extend notifications.py for email or other services if desired.
+
+
+
+
+
+
+
+
