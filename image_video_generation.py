@@ -9,7 +9,7 @@
 # First do export runwayml api otherwise it doesnot work, we can't save it the .env file
 
 ################# 
-######  export RUNWAYML_API_SECRET=YOU-RUNWAYML-API
+######  export RUNWAYML_API_SECRET=key_0521990e96f3f1f718abd6f2e73d96d8d56e198ff49e21f261d1c79a9c25e47a02d815601936facd5d7735ad60bd5d1f2f3c013a26025b2cdd9e3c8de125a0b6
 ################
 ######## For windows, no key export support exists
 
