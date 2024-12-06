@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1, h2 {
+            text-align: center;
+            margin: 20px;
+            color: #333;
+        }
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .gallery-item {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            max-height: 150px;
+            object-fit: cover;
+        }
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        }
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Content Gallery</h1>
+
+    <!-- Images Section -->
+    <h2>Images</h2>
+    <div class="gallery-container">
+        {% for image in images %}
+        <div class="gallery-item">
+            <img src="/content/{{ user_id }}/{{ image }}" alt="{{ image }}">
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Videos Section -->
+    <h2>Videos</h2>
+    <div class="gallery-container">
+        {% for video in videos %}
+        <div class="gallery-item video-container">
+            <video controls>
+                <source src="/content/{{ user_id }}/{{ video }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
