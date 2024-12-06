@@ -1,0 +1,7 @@
+requests
+openai
+runwayml
+python-dotenv
+flask 
+sqlalchemy
+flask-sqlalchemy
