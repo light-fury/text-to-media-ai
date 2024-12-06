@@ -21,6 +21,7 @@ Using OpenAI’s DALL·E 3 and RunwayML’s video generation model, this system 
 
 ```python
 generate_images_and_videos(user_id, prompt, n=5, image_size="1024x1024", video_duration=5)
+```
 
 - Images: Stored in generated_content/<user_id>/image_x.png.
 - Videos: Stored in generated_content/<user_id>/video_x.mp4.
@@ -67,4 +68,4 @@ When content generation is complete, the system prints a notification message to
 ```bash
   OPENAI_API_KEY=<your_openai_api_key>
   RUNWAYML_API_SECRET=<your_runwayml_api_key>
-
+```
