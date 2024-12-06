@@ -1,4 +1,4 @@
-# image_video_generator.py
+# image_video_generation.py
 # Partha Pratim Ray
 # 6/12/2024
 
@@ -99,6 +99,8 @@ def generate_video(user_id, image_path, prompt, model_name="gen3a_turbo", durati
         print(f"[ERROR] Video generation error: {e}")
         return None
 
+################ Change n as per your requirement of imahes and videos. 
+################ Currently it n = 5, but can be anything as per your credit limit of API on ChatGPT and RunwayML budget
 def generate_images_and_videos(user_id, prompt, n=5, image_size="1024x1024", video_duration=5):
     image_paths = []
     video_paths = []
