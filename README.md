@@ -1,6 +1,3 @@
-# AI-based-API-Aware-Image-and-Video-Generation-System
-This repo contains code and instructions for AI-based API Aware Image and Video Generation System
-
 # AI-based API Aware Image and Video Generation System
 
 This project provides a workflow for generating AI-driven, API-aware images and videos based on text prompts, storing the generated content and logs in databases, and serving the results through a web interface.
